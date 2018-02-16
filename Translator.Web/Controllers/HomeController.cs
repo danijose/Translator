@@ -6,7 +6,6 @@ namespace Translator.Web.Controllers
     {
         public IActionResult Index()
         {
-            ViewBag.Title = "Welcome to MiTranslator";
             return View();
         }
     }
