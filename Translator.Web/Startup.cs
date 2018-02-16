@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Translator.Web.Models;
 
 namespace Translator.Web
 {
@@ -10,6 +11,7 @@ namespace Translator.Web
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<IPlatformRepository, MockPlatformRepository>();
             services.AddMvc();
         }
 
@@ -19,7 +21,16 @@ namespace Translator.Web
             app.UseDeveloperExceptionPage();
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvcWithDefaultRoute();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=index}/{id?}"
+
+                );
+
+            }   
+            );
 
         }
     }

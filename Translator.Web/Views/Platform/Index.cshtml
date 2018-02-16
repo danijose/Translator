@@ -1,0 +1,29 @@
+﻿
+@model PlatformViewModel
+
+<h2>@Model.Title</h2>
+<h3>Platforms</h3>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive">
+                <table class="table table-bordered header-color">
+                    <tr>
+                        <th width="5%">Platform Id</th>
+                        <th width="5%">Platform Name</th>
+                    </tr>
+                    @foreach (var platform in Model.Platforms)
+                    {
+                        <tr>
+                            <td> @platform.Id </td>
+                            <td> @platform.Name </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
